@@ -66,7 +66,13 @@ const UserAdd = () => {
                       includeBase64: false,
                     },
                     data => {
-                      setFieldValue('avatar', data.assets![0]?.uri);
+                      console.log(data);
+                      setFieldValue(
+                        'avatar',
+                        data.assets || []?.length > 0
+                          ? data.assets![0]?.uri
+                          : '',
+                      );
                     },
                   );
                 }}>
